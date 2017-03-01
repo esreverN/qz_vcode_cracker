@@ -139,7 +139,7 @@ def load_imageset():
     for letter in iconset:
         for i in os.listdir('./iconset/%s/' % (letter)):
             temp = []
-            if i != "Thumbs.db" and i != ".DS_Store":
+            if i != "Thumbs.db" and i != ".DS_Store" and i != "place":
                 temp.append(buildvector(Image.open("./iconset/%s/%s" % (letter, i))))
             imageset.append({letter: temp})
     return imageset
@@ -180,7 +180,7 @@ def crack_rate():
     test_pic_list = os.listdir('./test_pic')
     success = 0
     for fname in test_pic_list:
-        if fname == "Thumbs.db" or fname == '.DS_Store':
+        if fname == "Thumbs.db" or fname == '.DS_Store' or fname == 'place':
             continue
         img = Image.open("./test_pic/" + fname)
         img = pre(img)
@@ -201,7 +201,7 @@ if __name__ == '__main__':
 
     # 训练集生成
     # for fname in os.listdir('./training_pic'):
-    #     if fname == "Thumbs.db" or fname == '.DS_Store':
+    #     if fname == "Thumbs.db" or fname == '.DS_Store' or fname == 'place':
     #         continue
     #     img = Image.open("./training_pic/" + fname)
     #     img = pre(img)
