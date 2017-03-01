@@ -2,6 +2,8 @@
 
 > author: TyrusChin
 
+[参考链接](https://www.shiyanlou.com/courses/364/labs/1165/document)
+
 `python cracker.py`
 
 测试结果： 15/20
