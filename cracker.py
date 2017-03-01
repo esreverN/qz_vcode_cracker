@@ -132,15 +132,15 @@ def buildvector(img):
     return d1
 
 # 加载训练集
-def load_imageset():
+def load_imageset(basedir = ""):
     iconset = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
                'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     imageset = []
     for letter in iconset:
-        for i in os.listdir('./iconset/%s/' % (letter)):
+        for i in os.listdir('./%siconset/%s/' % (basedir, letter)):
             temp = []
             if i != "Thumbs.db" and i != ".DS_Store" and i != "place":
-                temp.append(buildvector(Image.open("./iconset/%s/%s" % (letter, i))))
+                temp.append(buildvector(Image.open("./%siconset/%s/%s" % (basedir, letter, i))))
             imageset.append({letter: temp})
     return imageset
 
@@ -171,8 +171,8 @@ def get_training_part(img, letters):
     cut_pic(img, letters)
 
 # 破解验证码
-def cracker(img, letters):
-    imageset = load_imageset()
+def cracker(img, letters, basedir = ""):
+    imageset = load_imageset(basedir)
     return guess_res(img, letters, imageset)
 
 # 破解率检测
